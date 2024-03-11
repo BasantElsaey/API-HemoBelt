@@ -3,9 +3,14 @@ const mongoose = require('mongoose');
 const sessionSchema = new mongoose.Schema({
 
     date: Date,
+    time: String,
+
     startTime: Date,
     duration: Number,
-
+       
+    name : {
+       type : String,
+    },
     rate : {
         type : Number,
     },
@@ -17,23 +22,44 @@ const sessionSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
-      bloodTemperature: {
+      temperature: {
         type: Number,
         required: true,
       },
-      bloodPressure: {
+      pressure: {
           type: Number,
           required: true,
+      },
+      weight : {
+        type : Number,
+        required : true,
       },
     completed : {
         type : Boolean 
     },
-    patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
+    patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
 
-     totalSessions: Number,
-     completedSessions: Number,
-     pointer: Number,
-     
+    movingPointer: {
+      type: Number,
+      default: 0,
+    },
+    totalSessions: {
+      type: Number,
+      default: 0,
+    },
+    completedSessions: {
+      type: Number,
+      default: 0,
+    },
+    delayedSessions: {
+      type: Number,
+      default: 0,
+    },
+    weeklySessionHours: {
+      type: Number,
+      default: 12,
+    },
+    
      timestamp: { type: Date, default: Date.now },
 
 })

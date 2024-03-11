@@ -28,6 +28,6 @@ const upload = multer({ storage : multerStorage,fileFilter(req,file,cb){
 
 router.post("/tests/upload_files",upload.single('file'),uploadTest,resizeImage);
 
-router.get('/test/:id',getTestDetails);
+// router.get('/test/:id',getTestDetails);
 
 module.exports = router;

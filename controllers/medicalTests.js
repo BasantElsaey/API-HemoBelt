@@ -22,6 +22,40 @@ const multerStorage = multer.diskStorage({
 
 const upload = multer({ storage : multerStorage });
 
+
+// // Route for uploading a medical test
+// exports.uploadTest = async (req, res) => {
+//   const testName = req.body.testName;
+//   const file = req.file;
+
+//   const test = new MedicalTest({ testName });
+
+//  await test.save((error, test) => {
+//     if (error) {
+//       return res.status(500).json({ error: 'Failed to save test' });
+//     }
+
+//     res.status(200).json({ message: 'Test saved successfully', test });
+//   });
+// }
+
+// // Route for getting test details
+// exports.getTestDetails = async (req, res) => {
+//   const testId = req.params.id;
+
+//   MedicalTest.findById(testId, (error, test) => {
+//     if (error) {
+//       return res.status(500).json({ error: 'Failed to fetch test' });
+//     }
+
+//     if (!test) {
+//       return res.status(404).json({ error: 'Test not found' });
+//     }
+
+//     res.status(200).json({ test });
+//   });
+// }
+
 exports.uploadTest = async(req,res) => {
     console.log(req.body);
     // // console.log(req.files); // array of files
@@ -37,18 +71,18 @@ exports.resizeImage = async(req,res,next) =>{
 
 
 // Controller function for getting test details
-exports.getTestDetails = (req, res) => {
-    const testId = req.params.id;
+// exports.getTestDetails = (req, res) => {
+//     const testId = req.params.id;
   
-    MedicalTest.findById(testId)
-      .then((test) => {
-        if (!test) {
-          return res.status(404).json({ error: 'Test data not found' });
-        }
+//     MedicalTest.findById(testId)
+//       .then((test) => {
+//         if (!test) {
+//           return res.status(404).json({ error: 'Test data not found' });
+//         }
   
-        res.status(200).json(test);
-      })
-      .catch((error) => {
-        res.status(500).json({ error: 'Failed to fetch test data' });
-      });
-  };
+//         res.status(200).json(test);
+//       })
+//       .catch((error) => {
+//         res.status(500).json({ error: 'Failed to fetch test data' });
+//       });
+//   };

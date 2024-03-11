@@ -9,6 +9,9 @@ const medicalTestSchema = new mongoose.Schema({
     image : {
         data : Buffer,
     }, 
+    file : {
+        type : String
+    },
     patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
     patientId: {
         type: mongoose.Schema.Types.ObjectId,
